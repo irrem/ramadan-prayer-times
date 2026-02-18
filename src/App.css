@@ -1,0 +1,796 @@
+/* Rukiye İmsakiye – Modern, warm design */
+:root {
+  --bg: #0f172a;
+  --bg-soft: #1e293b;
+  --bg-card: rgba(30, 41, 59, 0.7);
+  --bg-card-solid: #1e293b;
+  --bg-card-hover: rgba(51, 65, 85, 0.6);
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #f59e0b;
+  --accent-soft: rgba(245, 158, 11, 0.15);
+  --accent-glow: rgba(245, 158, 11, 0.25);
+  --border: rgba(148, 163, 184, 0.2);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --radius-lg: 28px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  --shadow-glow: 0 0 40px var(--accent-glow);
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-arabic: 'Amiri', serif;
+}
+
+/* Layout – fener görselli arka plan */
+.layout {
+  min-height: 100vh;
+  background-color: #0f172a;
+  background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.78) 0%, rgba(15, 23, 42, 0.5) 35%, rgba(15, 23, 42, 0.88) 100%),
+    url('/lanterns-bg.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+.layout-main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 2rem;
+}
+
+@media (min-width: 640px) {
+  .layout-main {
+    padding: 1.5rem 1.5rem 2.5rem;
+  }
+}
+
+/* Sticky header */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.sticky-header-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.header-nav {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.header-nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.header-nav a:hover {
+  color: var(--accent);
+}
+
+/* Section spacing – compact to reduce scroll */
+.section-spacer {
+  height: 12px;
+}
+
+/* Base / App content */
+.app {
+  color: var(--text);
+}
+
+.home-page {
+  padding: 0;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 1rem 0 0.25rem;
+}
+
+.hero-title {
+  font-size: clamp(1.85rem, 5.5vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.35rem 0;
+  background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 50%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+/* Günün cümlesi */
+.quote-of-day .quote-text {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text);
+  font-style: italic;
+  padding-left: 1rem;
+  border-left: 3px solid var(--accent);
+}
+
+/* Bugün ne pişirsem? */
+.random-meal .meal-suggestion {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* Static pages (About, Privacy) */
+.static-page {
+  padding: 0;
+}
+
+.static-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.static-content h1 {
+  font-size: 1.5rem;
+  margin: 0 0 1rem 0;
+  color: var(--text);
+}
+
+.static-content p {
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0 0 1rem 0;
+}
+
+.static-back {
+  margin-top: 1.5rem !important;
+}
+
+.static-back a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.static-back a:hover {
+  text-decoration: underline;
+}
+
+/* Site footer */
+.site-footer {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1.5rem 1rem 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.footer-copy {
+  margin: 0 0 0.35rem 0;
+}
+
+.footer-links {
+  margin: 0 0 0.5rem 0;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+.footer-links .sep {
+  margin: 0 0.4rem;
+  opacity: 0.6;
+}
+
+.footer-credit {
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 0;
+  box-shadow: var(--shadow);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.home-page .card {
+  margin-bottom: 12px;
+}
+
+.home-page .card:last-child {
+  margin-bottom: 0;
+}
+
+.card:hover {
+  border-color: rgba(245, 158, 11, 0.2);
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1.1rem 0;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.card h2::after {
+  content: '';
+  display: block;
+  width: 2rem;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  border-radius: 2px;
+  margin-top: 0.5rem;
+}
+
+.card h3 {
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 0 0 0.4rem 0;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Location picker */
+.location-picker .pickers {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 480px) {
+  .location-picker .pickers {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.location-picker label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.location-picker label span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.location-picker select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background: var(--bg-soft);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='%2394a3b8' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  padding-right: 2.25rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.location-picker select:hover {
+  border-color: rgba(148, 163, 184, 0.4);
+}
+
+.location-picker select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.location-picker .error {
+  color: #f87171;
+  font-size: 0.9rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.location-picker .loading {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0 0;
+}
+
+.location-picker .selected-location {
+  margin: 1rem 0 0 0;
+  padding: 0.65rem 1rem;
+  background: var(--accent-soft);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.location-picker .selected-location strong {
+  color: var(--accent);
+}
+
+/* Prayer times list */
+.prayer-times-today .hijri {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin: -0.4rem 0 1rem 0;
+}
+
+.times-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.times-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  background: var(--bg-soft);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.times-list li:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(245, 158, 11, 0.15);
+}
+
+.times-list .label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.times-list .time {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/* Prayer times section (today / monthly toggle) */
+.prayer-times-section .hijri {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin: -0.4rem 0 1rem 0;
+}
+
+.prayer-times-section .hijri .miladi {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.prayer-times-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.prayer-times-section-head h2 {
+  margin: 0;
+}
+
+.prayer-times-section-head h2::after {
+  display: none;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.view-toggle button {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  background: var(--bg-soft);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.view-toggle button:hover {
+  color: var(--text);
+  border-color: rgba(148, 163, 184, 0.4);
+}
+
+.view-toggle button.active {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.prayer-times-month .range-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin: 0 0 0.75rem 0;
+}
+
+.prayer-times-month .loading,
+.prayer-times-month .error {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.prayer-times-month .error {
+  color: #f87171;
+}
+
+.month-scroll {
+  max-height: min(55vh, 420px);
+  overflow: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.month-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.month-table th,
+.month-table td {
+  padding: 0.4rem 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.month-table th {
+  background: var(--bg-soft);
+  color: var(--text-muted);
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+}
+
+.month-table td.day-num {
+  font-weight: 600;
+  color: var(--text);
+  width: 2rem;
+}
+
+.month-table th.th-badge {
+  width: 6rem;
+  min-width: 5rem;
+}
+
+.month-table td.day-badge {
+  vertical-align: middle;
+  padding-right: 0.5rem;
+}
+
+.month-table .badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.month-table .badge-kadir {
+  background: rgba(167, 139, 250, 0.25);
+  color: #c4b5fd;
+}
+
+.month-table .badge-arife {
+  background: rgba(74, 222, 128, 0.2);
+  color: #86efac;
+}
+
+.month-table .badge-bayram {
+  background: rgba(251, 191, 36, 0.25);
+  color: #fcd34d;
+}
+
+.month-table tr.row-kadir td {
+  background: rgba(167, 139, 250, 0.08);
+}
+
+.month-table tr.row-arife td {
+  background: rgba(74, 222, 128, 0.06);
+}
+
+.month-table tr.row-bayram td {
+  background: rgba(251, 191, 36, 0.08);
+}
+
+.month-table tbody tr:hover td {
+  background: var(--bg-card-hover);
+}
+
+.month-table tr.row-kadir:hover td {
+  background: rgba(167, 139, 250, 0.12);
+}
+
+.month-table tr.row-arife:hover td {
+  background: rgba(74, 222, 128, 0.1);
+}
+
+.month-table tr.row-bayram:hover td {
+  background: rgba(251, 191, 36, 0.12);
+}
+
+/* Countdowns – single card, focus on iftar */
+.countdowns {
+  padding: 1rem 1.25rem;
+}
+
+.countdowns h2 {
+  margin-bottom: 0.5rem;
+}
+
+.countdowns-main {
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  font-weight: 800;
+  color: #fcd34d;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.countdowns-passed {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.countdowns-next {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0.6rem 0 0 0;
+  font-weight: 500;
+}
+
+/* Location label */
+.location-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: -0.2rem 0 1rem 0;
+}
+
+.location-label strong {
+  color: var(--accent);
+}
+
+/* App messages */
+.app-error {
+  color: #f87171;
+  padding: 1rem;
+  background: rgba(248, 113, 113, 0.1);
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+  border: 1px solid rgba(248, 113, 113, 0.25);
+}
+
+.app-loading {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Duas */
+.duas-intro {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: -0.4rem 0 1.1rem 0;
+  line-height: 1.5;
+}
+
+.duas-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.1rem;
+}
+
+.duas-filters button {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  background: var(--bg-soft);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.duas-filters button:hover {
+  color: var(--text);
+  border-color: rgba(148, 163, 184, 0.4);
+  background: var(--bg-card-hover);
+}
+
+.duas-filters button.active {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.duas-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dua-item {
+  margin-bottom: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bg-soft);
+  transition: border-color 0.2s;
+}
+
+.dua-item:hover {
+  border-color: rgba(148, 163, 184, 0.35);
+}
+
+/* Odak modu: açık olan dua vurgulu, diğerleri hafif soluk */
+.duas-list[data-focus-mode] .dua-item:not(.dua-item--focused) {
+  opacity: 0.65;
+}
+
+.dua-item--focused {
+  border-color: rgba(245, 158, 11, 0.4);
+  background: var(--bg-card-hover);
+}
+
+.dua-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1.1rem;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.dua-header:hover {
+  background: var(--bg-card-hover);
+}
+
+.dua-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.dua-chevron {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+}
+
+.dua-item--focused .dua-chevron {
+  color: var(--accent);
+}
+
+.dua-category {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+}
+
+.dua-body {
+  padding: 0 1.1rem 1.1rem;
+  border-top: 1px solid var(--border);
+}
+
+.dua-arabic {
+  font-family: var(--font-arabic);
+  font-size: 1.4rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin: 0.85rem 0 0.5rem 0;
+  direction: rtl;
+}
+
+.dua-transliteration {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 0.5rem 0;
+}
+
+.dua-translation {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0.5rem 0 0 0;
+  line-height: 1.55;
+}
+
