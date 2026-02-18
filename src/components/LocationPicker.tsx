@@ -12,10 +12,10 @@ interface LocationPickerProps {
 export function LocationPicker({ onSelect, selectedDistrictId, selectedStateId }: LocationPickerProps) {
   const [countries, setCountries] = useState<{ _id: string; name: string }[]>([]);
   const [states, setStates] = useState<{ _id: string; name: string }[]>([]);
-  const [districts, setDistricts] = useState<{ _id: string; name: string }[]>([]);
+  const [, setDistricts] = useState<{ _id: string; name: string }[]>([]);
   const [countryId, setCountryId] = useState(TURKEY_ID);
   const [stateId, setStateId] = useState(selectedStateId || '');
-  const [districtId, setDistrictId] = useState(selectedDistrictId || '');
+  const [, setDistrictId] = useState(selectedDistrictId || '');
   const [loading, setLoading] = useState<'idle' | 'countries' | 'states' | 'districts'>('idle');
   const [error, setError] = useState('');
   const stateRef = useRef<{ _id: string; name: string } | undefined>(undefined);
