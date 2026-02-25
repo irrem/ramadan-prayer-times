@@ -1,23 +1,18 @@
 import { useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import type { Dua } from '../types';
 import { duas } from '../data/duas';
 
-const CATEGORIES: { value: Dua['category'] | 'all'; label: string }[] = [
-  { value: 'all', label: 'Tümü' },
-  { value: 'iftar', label: 'İftar' },
-  { value: 'sahur', label: 'Sahur' },
-  { value: 'ramadan', label: 'Ramazan' },
-  { value: 'general', label: 'Genel' },
-];
-
-const CATEGORY_LABELS: Record<Dua['category'], string> = {
-  iftar: 'İftar',
-  sahur: 'Sahur',
-  ramadan: 'Ramazan',
-  general: 'Genel',
+const CATEGORY_KEYS: Record<Dua['category'] | 'all', string> = {
+  all: 'duas.filterAll',
+  iftar: 'duas.filterIftar',
+  sahur: 'duas.filterSahur',
+  ramadan: 'duas.filterRamadan',
+  general: 'duas.filterGeneral',
 };
 
 export function DuasSection() {
+  const { locale, t } = useLanguage();
   const [category, setCategory] = useState<Dua['category'] | 'all'>('all');
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
@@ -25,17 +20,17 @@ export function DuasSection() {
 
   return (
     <section className="duas card">
-      <h2>Okunacak dualar</h2>
-      <p className="duas-intro">İftar, sahur ve Ramazan&apos;da okuyabileceğiniz dualar.</p>
+      <h2>{t('duas.title')}</h2>
+      <p className="duas-intro">{t('duas.intro')}</p>
       <div className="duas-filters">
-        {CATEGORIES.map((c) => (
+        {(['all', 'iftar', 'sahur', 'ramadan', 'general'] as const).map((c) => (
           <button
-            key={c.value}
+            key={c}
             type="button"
-            className={category === c.value ? 'active' : ''}
-            onClick={() => setCategory(c.value)}
+            className={category === c ? 'active' : ''}
+            onClick={() => setCategory(c)}
           >
-            {c.label}
+            {t(CATEGORY_KEYS[c])}
           </button>
         ))}
       </div>
@@ -48,9 +43,9 @@ export function DuasSection() {
               onClick={() => setExpandedId(expandedId === dua.id ? null : dua.id)}
               aria-expanded={expandedId === dua.id}
             >
-              <span>{dua.titleTr}</span>
+              <span>{locale === 'en' ? dua.titleEn : dua.titleTr}</span>
               <span className="dua-header-right">
-                <span className="dua-category">{CATEGORY_LABELS[dua.category]}</span>
+                <span className="dua-category">{t(CATEGORY_KEYS[dua.category])}</span>
                 <span className="dua-chevron" aria-hidden>{expandedId === dua.id ? '▼' : '▶'}</span>
               </span>
             </button>
@@ -60,7 +55,7 @@ export function DuasSection() {
                 {dua.transliteration && (
                   <p className="dua-transliteration">{dua.transliteration}</p>
                 )}
-                <p className="dua-translation">{dua.translationTr ?? dua.translationEn}</p>
+                <p className="dua-translation">{locale === 'en' ? dua.translationEn : (dua.translationTr ?? dua.translationEn)}</p>
               </div>
             )}
           </li>

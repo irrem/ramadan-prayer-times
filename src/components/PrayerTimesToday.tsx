@@ -1,12 +1,13 @@
+import { useLanguage } from '../context/LanguageContext';
 import type { PrayerTimes } from '../types';
 
-const LABELS: Record<keyof PrayerTimes, string> = {
-  imsak: 'İmsak (Sahur biter)',
-  gunes: 'Güneş',
-  ogle: 'Öğle',
-  ikindi: 'İkindi',
-  aksam: 'Akşam (İftar)',
-  yatsi: 'Yatsı',
+const LABEL_KEYS: Record<keyof PrayerTimes, string> = {
+  imsak: 'prayer.imsakSahur',
+  gunes: 'prayer.gunes',
+  ogle: 'prayer.ogle',
+  ikindi: 'prayer.ikindi',
+  aksam: 'prayer.aksamIftar',
+  yatsi: 'prayer.yatsi',
 };
 
 interface PrayerTimesTodayProps {
@@ -15,14 +16,15 @@ interface PrayerTimesTodayProps {
 }
 
 export function PrayerTimesToday({ times, hijriDate }: PrayerTimesTodayProps) {
+  const { t } = useLanguage();
   return (
     <section className="prayer-times-today card">
-      <h2>Bugünkü namaz vakitleri</h2>
+      <h2>{t('prayer.todayTitle')}</h2>
       {hijriDate && <p className="hijri">{hijriDate}</p>}
       <ul className="times-list">
-        {(Object.keys(LABELS) as (keyof PrayerTimes)[]).map((key) => (
+        {(Object.keys(LABEL_KEYS) as (keyof PrayerTimes)[]).map((key) => (
           <li key={key}>
-            <span className="label">{LABELS[key]}</span>
+            <span className="label">{t(LABEL_KEYS[key])}</span>
             <span className="time">{times[key]}</span>
           </li>
         ))}

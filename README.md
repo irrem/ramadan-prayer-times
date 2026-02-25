@@ -1,4 +1,4 @@
-# Rukiye İmsakiye
+# R İmsakiye
 
 Namaz vakitleri, Ramazan ritmi ve sakin öneriler için tek sayfa web uygulaması. React (Vite) + TypeScript.
 
@@ -6,7 +6,7 @@ Namaz vakitleri, Ramazan ritmi ve sakin öneriler için tek sayfa web uygulamas�
 
 - **Konum**: Ülke → şehir → ilçe (Diyanet verisi).
 - **Geri sayım**: İftara kalan süre, sıradaki ezan.
-- **Günün cümlesi**: Günlük bir cümle.
+- **Günün Sözü**: Günlük bir cümle.
 - **Bugün ne pişirsem?**: Günlük tek menü önerisi.
 - **Bugünkü vakitler**: İmsak, güneş, öğle, ikindi, akşam, yatsı.
 - **Okunacak dualar**: Accordion + odak modu (açık dua vurgulu).

@@ -44,8 +44,8 @@ export const duas: Dua[] = [
   },
   {
     id: '6',
-    titleEn: 'General opening',
-    titleTr: 'Genel Açılış',
+    titleEn: 'Opening (Bismillah)',
+    titleTr: 'Başlangıç',
     arabic: 'بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ',
     transliteration: 'Bismillahi r-Rahmani r-Rahim',
     translationEn: 'In the name of Allah, the Most Gracious, the Most Merciful.',

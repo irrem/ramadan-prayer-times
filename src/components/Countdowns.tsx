@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import type { PrayerTimes } from '../types';
 
 const PRAYER_ORDER: (keyof PrayerTimes)[] = ['imsak', 'gunes', 'ogle', 'ikindi', 'aksam', 'yatsi'];
@@ -19,16 +20,6 @@ function getNextPrayer(times: PrayerTimes): { key: keyof PrayerTimes; time: stri
   return null;
 }
 
-function formatDiffShort(ms: number): string {
-  if (ms <= 0) return '0m';
-  const s = Math.floor(ms / 1000) % 60;
-  const m = Math.floor(ms / 60000) % 60;
-  const h = Math.floor(ms / 3600000);
-  if (h > 0) return `${h}h ${m}m`;
-  if (m > 0) return `${m}m ${s}s`;
-  return `${s}s`;
-}
-
 function formatDiffHMS(ms: number): string {
   if (ms <= 0) return '00:00:00';
   const s = Math.floor(ms / 1000) % 60;
@@ -37,13 +28,13 @@ function formatDiffHMS(ms: number): string {
   return [h, m, s].map((n) => String(n).padStart(2, '0')).join(':');
 }
 
-const PRAYER_LABELS: Record<keyof PrayerTimes, string> = {
-  imsak: 'İmsak',
-  gunes: 'Güneş',
-  ogle: 'Öğle',
-  ikindi: 'İkindi',
-  aksam: 'İftar (Akşam)',
-  yatsi: 'Yatsı',
+const PRAYER_KEYS: Record<keyof PrayerTimes, string> = {
+  imsak: 'prayer.imsak',
+  gunes: 'prayer.gunes',
+  ogle: 'prayer.ogle',
+  ikindi: 'prayer.ikindi',
+  aksam: 'prayer.iftar',
+  yatsi: 'prayer.yatsi',
 };
 
 interface CountdownsProps {
@@ -51,6 +42,7 @@ interface CountdownsProps {
 }
 
 export function Countdowns({ times }: CountdownsProps) {
+  const { t } = useLanguage();
   const [now, setNow] = useState(() => new Date());
 
   useEffect(() => {
@@ -65,18 +57,28 @@ export function Countdowns({ times }: CountdownsProps) {
   const nextMs = next ? next.at.getTime() - now.getTime() : 0;
 
   return (
-    <section className="countdowns card">
-      <h2>İftara kalan süre</h2>
-      {iftarPassed ? (
-        <p className="countdowns-passed">Bugünkü iftar vakti geçti. Bir sonraki iftar yarın.</p>
-      ) : (
-        <p className="countdowns-main" aria-live="polite">{formatDiffHMS(iftarMs)}</p>
-      )}
-      <p className="countdowns-next">
-        {next
-          ? <>Sonraki vakit: {PRAYER_LABELS[next.key]} {next.time} ( {formatDiffShort(nextMs)} ) sonra</>
-          : <>Sıradaki namaz yarın İmsak.</>}
-      </p>
+    <section className="countdowns-wrapper">
+      <div className="countdowns-card countdowns-card-iftar">
+        <h2>{t('countdown.title')}</h2>
+        {iftarPassed ? (
+          <p className="countdowns-passed">{t('countdown.passed')}</p>
+        ) : (
+          <p className="countdowns-main" aria-live="polite">{formatDiffHMS(iftarMs)}</p>
+        )}
+      </div>
+      <div className="countdowns-card countdowns-card-next">
+        <h2>{t('countdown.nextPrayerTitle')}</h2>
+        {next ? (
+          <>
+            <p className="countdowns-main" aria-live="polite">{formatDiffHMS(nextMs)}</p>
+            <p className="countdowns-next-label">
+              {t(PRAYER_KEYS[next.key])} {next.time}
+            </p>
+          </>
+        ) : (
+          <p className="countdowns-passed">{t('countdown.nextImsakTomorrow')}</p>
+        )}
+      </div>
     </section>
   );
 }

@@ -1,4 +1,4 @@
-/* Rukiye İmsakiye – Modern, warm design */
+/* R İmsakiye – Modern, warm design */
 :root {
   --bg: #0f172a;
   --bg-soft: #1e293b;
@@ -107,6 +107,29 @@
   color: var(--accent);
 }
 
+.header-nav .lang-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.header-nav .lang-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.header-nav .lang-toggle.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(148, 163, 184, 0.1);
+}
+
 /* Section spacing – compact to reduce scroll */
 .section-spacer {
   height: 12px;
@@ -146,15 +169,31 @@
   letter-spacing: 0.02em;
 }
 
-/* Günün cümlesi */
-.quote-of-day .quote-text {
+/* Hadis */
+.quote-of-day.hadith-section .hadith-arabic {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--text);
+  font-family: var(--font-arabic, 'Amiri', serif);
+  text-align: right;
+}
+
+.quote-of-day.hadith-section .hadith-translation {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   line-height: 1.6;
   color: var(--text);
   font-style: italic;
   padding-left: 1rem;
   border-left: 3px solid var(--accent);
+}
+
+.quote-of-day.hadith-section .hadith-source {
+  margin: 0.75rem 0 0 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: normal;
 }
 
 /* Bugün ne pişirsem? */
@@ -293,6 +332,54 @@
 }
 
 /* Location picker */
+.location-picker-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.location-picker-head h2 {
+  margin: 0;
+}
+
+.location-info-btn {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.location-info-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.location-info-panel {
+  margin: 0.75rem 0 0 0;
+  padding: 0.75rem 1rem;
+  background: var(--accent-soft);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+.location-info-panel p {
+  margin: 0;
+  line-height: 1.5;
+}
+
 .location-picker .pickers {
   display: grid;
   grid-template-columns: 1fr;
@@ -589,17 +676,37 @@
   background: rgba(251, 191, 36, 0.12);
 }
 
-/* Countdowns – single card, focus on iftar */
-.countdowns {
-  padding: 1rem 1.25rem;
+/* Countdowns – two side-by-side cards */
+.countdowns-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
-.countdowns h2 {
-  margin-bottom: 0.5rem;
+@media (max-width: 640px) {
+  .countdowns-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+.countdowns-card {
+  padding: 1rem 1.25rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.countdowns-card h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
 }
 
 .countdowns-main {
-  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 800;
   color: #fcd34d;
   font-variant-numeric: tabular-nums;
@@ -610,15 +717,16 @@
 
 .countdowns-passed {
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   margin: 0;
 }
 
-.countdowns-next {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin: 0.6rem 0 0 0;
-  font-weight: 500;
+.countdowns-next-label {
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  font-weight: 700;
+  color: var(--text);
+  margin: 0.5rem 0 0 0;
+  letter-spacing: 0.02em;
 }
 
 /* Location label */

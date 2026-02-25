@@ -1,21 +1,17 @@
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 export function AboutPage() {
+  const { t } = useLanguage();
   return (
     <div className="app static-page about-page">
       <div className="static-content card">
-        <h1>Bu proje nedir?</h1>
-        <p>
-          Rukiye İmsakiye, namaz vakitleri ve Ramazan günlüğünü tek sayfada sunan, sade ve kullanıcı dostu bir web uygulamasıdır.
-        </p>
-        <p>
-          Konumunuza göre vakitleri gösterir; iftara kalan süre, günün cümlesi, yemek önerisi ve okunacak dualarla günlük ritminize eşlik eder.
-        </p>
-        <p>
-          Veri kaynağı Diyanet İşleri Başkanlığıdır; giriş veya hesap gerektirmez.
-        </p>
+        <h1>{t('about.title')}</h1>
+        <p>{t('about.p1')}</p>
+        <p>{t('about.p2')}</p>
+        <p>{t('about.p3')}</p>
         <p className="static-back">
-          <Link to="/">← Ana sayfaya dön</Link>
+          <Link to="/">{t('about.back')}</Link>
         </p>
       </div>
     </div>

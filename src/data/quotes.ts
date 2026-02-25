@@ -1,4 +1,4 @@
-/** Günün cümlesi – her gün aynı cümle (gün indexine göre) veya rastgele. */
+/** Günün Sözü – her gün aynı cümle (gün indexine göre) veya rastgele. */
 export const quotes: string[] = [
   'Sabır, ışığa açılan kapıdır.',
   'İftar vakti, paylaşmanın en güzel anıdır.',

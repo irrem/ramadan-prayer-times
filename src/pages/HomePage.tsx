@@ -5,9 +5,11 @@ import { Countdowns } from '../components/Countdowns';
 import { DuasSection } from '../components/DuasSection';
 import { QuoteOfDay } from '../components/QuoteOfDay';
 import { fetchDailyPrayerTimes, type DailyPrayerItem } from '../api/prayerTimes';
+import { useLanguage } from '../context/LanguageContext';
 import type { PrayerTimes } from '../types';
 
 export function HomePage() {
+  const { t } = useLanguage();
   const [districtId, setDistrictId] = useState<string | null>(() => {
     try {
       return localStorage.getItem('imsakiye-districtId');
@@ -78,7 +80,7 @@ export function HomePage() {
   return (
     <div className="app home-page">
       <section className="hero">
-        <h1 className="hero-title">Ramazan İmsakiyesi</h1>
+        <h1 className="hero-title">{t('hero.title')}</h1>
      </section>
 
       <div className="section-spacer" />
@@ -89,14 +91,14 @@ export function HomePage() {
       />
 
       {error && <p className="app-error">{error}</p>}
-      {loading && <p className="app-loading">Namaz vakitleri yükleniyor…</p>}
+      {loading && <p className="app-loading">{t('home.loading')}</p>}
 
       {today && (
         <>
           <div className="section-spacer" />
           {districtName && stateName && (
             <p className="location-label">
-              <strong>{districtName}</strong>, {stateName} için namaz vakitleri
+              <strong>{districtName}</strong>, {stateName} {t('home.prayerTimesFor')}
             </p>
           )}
           <Countdowns times={today.times} />
