@@ -3,7 +3,6 @@ import { LocationPicker } from '../components/LocationPicker';
 import { PrayerTimesSection } from '../components/PrayerTimesSection';
 import { Countdowns } from '../components/Countdowns';
 import { DuasSection } from '../components/DuasSection';
-import { QuoteOfDay } from '../components/QuoteOfDay';
 import { fetchDailyPrayerTimes, type DailyPrayerItem } from '../api/prayerTimes';
 import { useLanguage } from '../context/LanguageContext';
 import type { PrayerTimes } from '../types';
