@@ -1,6 +1,18 @@
-# Analytics (Vercel)
+# Analytics (Vercel) – Kaç kişi kullanıyor?
 
 This project uses **Vercel Analytics** (`@vercel/analytics/react`). When the app is deployed on Vercel, the Analytics component sends page views to Vercel.
+
+## Kaç kişi kullanıyor? (How many users?)
+
+1. [Vercel Dashboard](https://vercel.com/dashboard) → Projenizi seçin (**ramadan-prayer-times** veya ilgili proje adı).
+2. Üst menüden **Analytics** sekmesine tıklayın.
+3. Burada göreceksiniz:
+   - **Unique visitors (Benzersiz ziyaretçiler)** – Kaç farklı kişi siteyi ziyaret etmiş (günlük / haftalık / toplam).
+   - **Page views (Sayfa görüntüleme)** – Toplam yükleme sayısı.
+   - **Top pages** – Hangi sayfalar en çok açılmış.
+   - **Referrers** – Trafik nereden geliyor (Google, direkt, vb.).
+
+Not: İlk veriler deploy sonrası kısa süre içinde görünmeye başlar. Ücretsiz planda Analytics sınırlı olabilir; detay için Vercel planınıza bakın.
 
 ## What you get in the Vercel dashboard
 

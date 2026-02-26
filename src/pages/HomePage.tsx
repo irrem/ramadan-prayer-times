@@ -106,7 +106,7 @@ export function HomePage() {
       )}
 
       <div className="section-spacer" />
-      <QuoteOfDay />
+   
 
       {today && districtId && (
         <>
